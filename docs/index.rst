@@ -1,8 +1,8 @@
 .. meta::
-   :title: Wavelink Documentation
-   :description: Documentation for Wavelink, the Powerful Lavalink wrapper for discord.py.
+   :title: BillaLink Documentation
+   :description: Documentation for BillaLink, the Powerful Lavalink wrapper for discord.py.
    :language: en-US
-   :keywords: wavelink, lavalink, python api
+   :keywords: BillaLink, lavalink, python api
    :copyright: PythonistaGuild. 2019 - Present
 
 
@@ -38,18 +38,18 @@
 
    <h3 class="index-section-header">API Reference</h3>
    <hr class="featuring-hr">
-   The API References of Wavelink.
+   The API References of BillaLink.
 
    <div class="index-apis-wrapper">
       <div class="index-apis-section">
-         <b>Wavelink Reference:</b>
+         <b>BillaLink Reference:</b>
          <ul class="index-featuring-list">
-            <li><a href="wavelink.html" class="reference internal">API Reference</a></li>
+            <li><a href="BillaLink.html" class="reference internal">API Reference</a></li>
          </ul>
       </div>
 
       <div class="index-apis-section">
-         <b>Wavelink Extension API's:</b>
+         <b>BillaLink Extension API's:</b>
          <ul class="index-featuring-list">
             <li><a href="ext/spotify.html" class="reference internal">Spotify Extension</a></li>
          </ul>
@@ -61,7 +61,7 @@
    Consider joining the Official Discord server for a fast response to help.<br>
    <a href="https://discord.gg/RAKc3HF"><img src="https://discordapp.com/api/guilds/490948346773635102/widget.png?style=banner2"></a><br><br>
 
-   <b>For issues and contributing with the library, visit:</b> <a href"https://github.com/PythonistaGuild/Wavelink">GitHub</a>
+   <b>For issues and contributing with the library, visit:</b> <a href"https://github.com/PythonistaGuild/BillaLink">GitHub</a>
 
 
 .. rst-class:: index-display-none
@@ -86,7 +86,7 @@
    :maxdepth: 1
    :caption: API Reference
 
-   wavelink
+   BillaLink
 
 
 .. raw:: html

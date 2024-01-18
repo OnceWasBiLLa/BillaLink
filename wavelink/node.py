@@ -56,7 +56,7 @@ logger: logging.Logger = logging.getLogger(__name__)
 
 # noinspection PyShadowingBuiltins
 class Node:
-    """The base Wavelink Node.
+    """The base BillaLink Node.
 
     The Node is responsible for keeping the Websocket alive, tracking the state of Players
     and fetching/decoding Tracks and Playlists.
@@ -210,10 +210,10 @@ class Node:
 
             version_tuple = tuple(int(v) for v in version.split('.'))
             if version_tuple[0] < 3:
-                raise InvalidLavalinkVersion(f'Wavelink 2 is not compatible with Lavalink "{version}".')
+                raise InvalidLavalinkVersion(f'BillaLink 2 is not compatible with Lavalink "{version}".')
 
             if version_tuple[0] == 3 and version_tuple[1] < 7:
-                raise InvalidLavalinkVersion('Wavelink 2 is not compatible with Lavalink versions under "3.7".')
+                raise InvalidLavalinkVersion('BillaLink 2 is not compatible with Lavalink versions under "3.7".')
 
             self._major_version = version_tuple[0]
 
@@ -301,13 +301,13 @@ class Node:
         Returns
         -------
         Optional[:class:`tracks.Playlist`]:
-            The related wavelink track object or ``None`` if none was found.
+            The related BillaLink track object or ``None`` if none was found.
 
         Raises
         ------
         ValueError
             Loading the playlist failed.
-        WavelinkException
+        BillaLinkException
             An unspecified error occurred when loading the playlist.
         """
         encoded_query = urllib.parse.quote(query)
@@ -323,7 +323,7 @@ class Node:
             return None
 
         if load_type is not LoadType.playlist_loaded:
-            raise WavelinkException("Track failed to load.")
+            raise BillaLinkException("Track failed to load.")
 
         return cls(data)
 
@@ -347,7 +347,7 @@ class Node:
 
 # noinspection PyShadowingBuiltins
 class NodePool:
-    """The Wavelink NodePool is responsible for keeping track of all :class:`Node`.
+    """The BillaLink NodePool is responsible for keeping track of all :class:`Node`.
 
     Attributes
     ----------
@@ -436,12 +436,12 @@ class NodePool:
         """
         if id:
             if id not in cls.__nodes:
-                raise InvalidNode(f'A Node with ID "{id}" does not exist on the Wavelink NodePool.')
+                raise InvalidNode(f'A Node with ID "{id}" does not exist on the BillaLink NodePool.')
 
             return cls.__nodes[id]
 
         if not cls.__nodes:
-            raise InvalidNode('No Node currently exists on the Wavelink NodePool.')
+            raise InvalidNode('No Node currently exists on the BillaLink NodePool.')
 
         nodes = cls.__nodes.values()
         return sorted(nodes, key=lambda n: len(n.players))[0]
@@ -463,7 +463,7 @@ class NodePool:
 
         nodes: list[Node] = [n for n in cls.__nodes.values() if n.status is NodeStatus.CONNECTED]
         if not nodes:
-            raise InvalidNode('There are no Nodes on the Wavelink NodePool that are currently in the connected state.')
+            raise InvalidNode('There are no Nodes on the BillaLink NodePool that are currently in the connected state.')
 
         return sorted(nodes, key=lambda n: len(n.players))[0]
 

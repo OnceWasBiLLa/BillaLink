@@ -1,15 +1,15 @@
-.. currentmodule:: wavelink
+.. currentmodule:: BillaLink
 
 
 API Reference
 -------------
-The wavelink API Reference. This section outlines the API and all it's components within wavelink.
+The BillaLink API Reference. This section outlines the API and all it's components within BillaLink.
 
 
 Event Reference
 ---------------
 
-WaveLink Events are events dispatched when certain events happen in Lavalink and Wavelink.
+BillaLink Events are events dispatched when certain events happen in Lavalink and BillaLink.
 All events must be coroutines.
 
 Events are dispatched via discord.py and as such can be used with listener syntax.
@@ -22,27 +22,27 @@ An event listener in a cog...
 .. code-block:: python3
 
     @commands.Cog.listener()
-    async def on_wavelink_node_ready(node: Node) -> None:
+    async def on_BillaLink_node_ready(node: Node) -> None:
         print(f"Node {node.id} is ready!")
 
 
-.. function:: on_wavelink_node_ready(node: Node)
+.. function:: on_BillaLink_node_ready(node: Node)
 
     Called when the Node you are connecting to has initialised and successfully connected to Lavalink.
 
-.. function:: on_wavelink_track_event(payload: TrackEventPayload)
+.. function:: on_BillaLink_track_event(payload: TrackEventPayload)
 
     Called when any Track Event occurs.
 
-.. function:: on_wavelink_track_start(payload: TrackEventPayload)
+.. function:: on_BillaLink_track_start(payload: TrackEventPayload)
 
     Called when a track starts playing.
 
-.. function:: on_wavelink_track_end(payload: TrackEventPayload)
+.. function:: on_BillaLink_track_end(payload: TrackEventPayload)
 
     Called when the current track has finished playing.
 
-.. function:: on_wavelink_websocket_closed(payload: WebsocketClosedPayload)
+.. function:: on_BillaLink_websocket_closed(payload: WebsocketClosedPayload)
 
     Called when the websocket to the voice server is closed.
 
@@ -90,14 +90,14 @@ Enums
 
 Abstract Base Classes
 ---------------------
-.. attributetable:: wavelink.tracks.Playable
+.. attributetable:: BillaLink.tracks.Playable
 
-.. autoclass:: wavelink.tracks.Playable
+.. autoclass:: BillaLink.tracks.Playable
     :members:
 
-.. attributetable:: wavelink.tracks.Playlist
+.. attributetable:: BillaLink.tracks.Playlist
 
-.. autoclass:: wavelink.tracks.Playlist
+.. autoclass:: BillaLink.tracks.Playlist
     :members:
 
 
@@ -246,9 +246,9 @@ Filters
 Exceptions
 ----------
 
-.. py:exception:: WavelinkException
+.. py:exception:: BillaLinkException
 
-    Base wavelink exception.
+    Base BillaLink exception.
 
 .. py:exception:: AuthorizationFailed
 
@@ -258,11 +258,11 @@ Exceptions
 
 .. py:exception:: InvalidLavalinkVersion
 
-    Exception raised when you try to use wavelink 2 with a Lavalink version under 3.7.
+    Exception raised when you try to use BillaLink 2 with a Lavalink version under 3.7.
 
 .. py:exception:: InvalidLavalinkResponse
 
-    Exception raised when wavelink receives an invalid response from Lavalink.
+    Exception raised when BillaLink receives an invalid response from Lavalink.
 
     status: :class:`int` | :class:`None`
         The status code. Could be :class:`None`.

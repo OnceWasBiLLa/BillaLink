@@ -1,15 +1,15 @@
 Recipes and Examples
 =============================
-Below are common short examples and recipes for use with WaveLink 2.
-This is not an exhaustive list, for more detailed examples, see: `GitHub Examples <https://github.com/PythonistaGuild/Wavelink/tree/main/examples>`_
+Below are common short examples and recipes for use with BillaLink 2.
+This is not an exhaustive list, for more detailed examples, see: `GitHub Examples <https://github.com/PythonistaGuild/BillaLink/tree/main/examples>`_
 
 
 Listening to Events
 -------------------
-WaveLink 2 makes use of the built in event dispatcher of Discord.py.
-This means you can listen to WaveLink events the same way you listen to discord.py events.
+BillaLink 2 makes use of the built in event dispatcher of Discord.py.
+This means you can listen to BillaLink events the same way you listen to discord.py events.
 
-*All WaveLink events are prefixed with ``on_wavelink_``*
+*All BillaLink events are prefixed with ``on_BillaLink_``*
 
 
 **Outside of a Cog:**
@@ -17,7 +17,7 @@ This means you can listen to WaveLink events the same way you listen to discord.
 .. code:: python3
 
     @bot.event
-    async def on_wavelink_node_ready(node: Node) -> None:
+    async def on_BillaLink_node_ready(node: Node) -> None:
         print(f"Node {node.id} is ready!")
 
 
@@ -26,16 +26,16 @@ This means you can listen to WaveLink events the same way you listen to discord.
 .. code:: python3
 
     @commands.Cog.listener()
-    async def on_wavelink_node_ready(self, node: Node) -> None:
+    async def on_BillaLink_node_ready(self, node: Node) -> None:
         print(f"Node {node.id} is ready!")
 
 
 
 Creating and using Nodes
 ------------------------
-Wavelink 2 has a more intuitive way of creating and storing Nodes.
+BillaLink 2 has a more intuitive way of creating and storing Nodes.
 Nodes are now stored at class level in a `NodePool`. Once a node has been created, you can access that node anywhere that
-wavelink can be imported.
+BillaLink can be imported.
 
 
 **Creating a Node:**
@@ -45,8 +45,8 @@ wavelink can be imported.
     # Creating a node is as simple as this...
     # The node will be automatically stored to the global NodePool...
     # You can create as many nodes as you like, most people only need 1...
-    node: wavelink.Node = wavelink.Node(uri='http://localhost:2333', password='youshallnotpass')
-    await wavelink.NodePool.connect(client=bot, nodes=[node])
+    node: BillaLink.Node = BillaLink.Node(uri='http://localhost:2333', password='youshallnotpass')
+    await BillaLink.NodePool.connect(client=bot, nodes=[node])
 
 
 **Accessing the best Node from the NodePool:**
@@ -54,14 +54,14 @@ wavelink can be imported.
 .. code:: python3
 
     # Accessing a Node is easy...
-    node = wavelink.NodePool.get_node()
+    node = BillaLink.NodePool.get_node()
 
 
 **Accessing a node by identifier from the NodePool:**
 
 .. code:: python3
 
-    node = wavelink.NodePool.get_node(id="MY_NODE_ID")
+    node = BillaLink.NodePool.get_node(id="MY_NODE_ID")
 
 
 **Accessing a list of Players a Node contains:**
@@ -69,7 +69,7 @@ wavelink can be imported.
 .. code:: python3
 
     # A mapping of Guild ID to Player.
-    node = wavelink.NodePool.get_node()
+    node = BillaLink.NodePool.get_node()
     print(node.players)
 
 
@@ -77,15 +77,15 @@ wavelink can be imported.
 
 .. code:: python3
 
-    from wavelink.ext import spotify
+    from BillaLink.ext import spotify
 
 
     sc = spotify.SpotifyClient(
         client_id='CLIENT_ID',
         client_secret='SECRET'
     )
-    node: wavelink.Node = wavelink.Node(uri='http://localhost:2333', password='youshallnotpass')
-    await wavelink.NodePool.connect(client=self, nodes=[node], spotify=sc)
+    node: BillaLink.Node = BillaLink.Node(uri='http://localhost:2333', password='youshallnotpass')
+    await BillaLink.NodePool.connect(client=self, nodes=[node], spotify=sc)
 
 
 Searching Tracks
@@ -97,14 +97,14 @@ Below are some common recipes for searching tracks.
 
 .. code:: python3
 
-    track = await wavelink.YouTubeTrack.search("Ocean Drive", return_first=True)
+    track = await BillaLink.YouTubeTrack.search("Ocean Drive", return_first=True)
 
 
 **Returning more than one result:**
 
 .. code:: python3
 
-    tracks = await wavelink.YouTubeTrack.search("Ocean Drive")
+    tracks = await BillaLink.YouTubeTrack.search("Ocean Drive")
 
 
 **As a Discord.py converter:**
@@ -112,14 +112,14 @@ Below are some common recipes for searching tracks.
 .. code:: python3
 
     @commands.command()
-    async def play(self, ctx: commands.Context, *, track: wavelink.YouTubeTrack):
+    async def play(self, ctx: commands.Context, *, track: BillaLink.YouTubeTrack):
         # The track will be the first result from what you searched when invoking the command...
         ...
 
 
 Creating Players and VoiceProtocol
 ----------------------------------
-Below are some common examples of how to use the new VoiceProtocol with WaveLink.
+Below are some common examples of how to use the new VoiceProtocol with BillaLink.
 
 
 **A Simple Player:**
@@ -127,7 +127,7 @@ Below are some common examples of how to use the new VoiceProtocol with WaveLink
 .. code:: python3
 
     import discord
-    import wavelink
+    import BillaLink
 
     from discord.ext import commands
 
@@ -140,10 +140,10 @@ Below are some common examples of how to use the new VoiceProtocol with WaveLink
             return await ctx.send('No voice channel to connect to. Please either provide one or join one.')
 
         # vc is short for voice client...
-        # Our "vc" will be our wavelink.Player as typehinted below...
-        # wavelink.Player is also a VoiceProtocol...
+        # Our "vc" will be our BillaLink.Player as typehinted below...
+        # BillaLink.Player is also a VoiceProtocol...
 
-        vc: wavelink.Player = await channel.connect(cls=wavelink.Player)
+        vc: BillaLink.Player = await channel.connect(cls=BillaLink.Player)
         return vc
 
 
@@ -152,12 +152,12 @@ Below are some common examples of how to use the new VoiceProtocol with WaveLink
 .. code:: python3
 
     import discord
-    import wavelink
+    import BillaLink
 
     from discord.ext import commands
 
 
-    class Player(wavelink.Player):
+    class Player(BillaLink.Player):
         """A Player with a DJ attribute."""
 
         def __init__(self, dj: discord.Member):
@@ -186,8 +186,8 @@ Below are some common examples of how to use the new VoiceProtocol with WaveLink
 .. code:: python3
 
     @commands.command()
-    async def play(self, ctx: commands.Context, *, track: wavelink.YouTubeTrack):
-        vc: wavelink.Player = ctx.voice_client
+    async def play(self, ctx: commands.Context, *, track: BillaLink.YouTubeTrack):
+        vc: BillaLink.Player = ctx.voice_client
 
         if not vc:
             # Call a connect command or similar that returns a vc...
@@ -203,13 +203,13 @@ Below are some common examples of how to use the new VoiceProtocol with WaveLink
 
     # Could return None, if the Player was not found...
 
-    node = wavelink.NodePool.get_node()
+    node = BillaLink.NodePool.get_node()
     player = node.get_player(ctx.guild.id)
 
 
 Common Operations
 -----------------
-Below are some common operations used with WaveLink.
+Below are some common operations used with BillaLink.
 See the documentation for more info.
 
 .. code:: python3
@@ -251,7 +251,7 @@ See the documentation for more info.
     player.is_paused()
 
     # Get the best connected node...
-    node = wavelink.NodePool.get_connected_node()
+    node = BillaLink.NodePool.get_connected_node()
 
     # Common node properties...
     node.uri

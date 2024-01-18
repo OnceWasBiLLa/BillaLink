@@ -51,7 +51,7 @@ class BaseQueue:
     def __repr__(self) -> str:
         """Official representation with max_size and member count."""
         return (
-            f"Wavelink Queue: members={self.count}")
+            f"BillaLink Queue: members={self.count}")
 
     def __bool__(self) -> bool:
         """Treats the queue as a bool, with it evaluating True when it contains members."""

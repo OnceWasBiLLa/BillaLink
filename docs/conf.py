@@ -25,13 +25,13 @@ sys.path.insert(0, os.path.abspath(".."))
 sys.path.append(os.path.abspath("extensions"))
 
 on_rtd = os.environ.get("READTHEDOCS") == "True"
-project = "Wavelink"
+project = "BillaLink"
 copyright = "2022, PythonistaGuild, EvieePy"
 author = "PythonistaGuild, EvieePy"
 
 # The full version, including alpha/beta/rc tags
 release = ''
-with open('../wavelink/__init__.py') as f:
+with open('../BillaLink/__init__.py') as f:
     release = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read(), re.MULTILINE).group(1)  # type: ignore
 
 # -- General configuration ---------------------------------------------------
@@ -50,12 +50,12 @@ extensions = [
 ]
 
 # OpenGraph Meta Tags
-ogp_image = "https://raw.githubusercontent.com/PythonistaGuild/Wavelink/master/logo.png"
-ogp_description = "Documentation for Wavelink, the Powerful Lavalink wrapper for discord.py."
-ogp_site_url = "https://wavelink.dev/"
+ogp_image = "https://raw.githubusercontent.com/PythonistaGuild/BillaLink/master/logo.png"
+ogp_description = "Documentation for BillaLink, the Powerful Lavalink wrapper for discord.py."
+ogp_site_url = "https://BillaLink.dev/"
 ogp_custom_meta_tags = [
-    '<meta property="og:description" content="A robust and powerful Lavalink wrapper for Discord.py. Wavelink features a fully asynchronous API that\'s intuitive and easy to use with built in Spotify Support and Node Pool Balancing." />',
-    '<meta property="og:title" content="Wavelink Documentation" />'
+    '<meta property="og:description" content="A robust and powerful Lavalink wrapper for Discord.py. BillaLink features a fully asynchronous API that\'s intuitive and easy to use with built in Spotify Support and Node Pool Balancing." />',
+    '<meta property="og:title" content="BillaLink Documentation" />'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -117,7 +117,7 @@ intersphinx_mapping = {
 }
 
 extlinks = {
-    'wlissue': ('https://github.com/PythonistaGuild/Wavelink/issues/%s', 'GH-%s'),
+    'wlissue': ('https://github.com/PythonistaGuild/BillaLink/issues/%s', 'GH-%s'),
     'ddocs': ('https://discord.com/developers/docs/%s', None),
 }
 

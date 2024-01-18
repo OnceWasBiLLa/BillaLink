@@ -1,19 +1,19 @@
 Installing
 ============
-WaveLink requires Python 3.10+.
+BillaLink requires Python 3.10+.
 You can download the latest version of Python `here <https://www.python.org/downloads/>`_.
 
 **Windows:**
 
 .. code:: sh
 
-    py -3.10 -m pip install -U wavelink
+    py -3.10 -m pip install -U BillaLink
 
 **Linux:**
 
 .. code:: sh
 
-    python3.10 -m pip install -U wavelink
+    python3.10 -m pip install -U BillaLink
 
 
 Debugging

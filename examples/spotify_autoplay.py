@@ -22,9 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 import discord
-import wavelink
+import BillaLink
 from discord.ext import commands
-from wavelink.ext import spotify
+from BillaLink.ext import spotify
 
 
 class Bot(commands.Bot):
@@ -37,15 +37,15 @@ class Bot(commands.Bot):
         print(f'Logged in {self.user} | {self.user.id}')
 
     async def setup_hook(self) -> None:
-        # Wavelink 2.0 has made connecting Nodes easier... Simply create each Node
+        # BillaLink 2.0 has made connecting Nodes easier... Simply create each Node
         # and pass it to NodePool.connect with the client/bot.
         # Fill your Spotify API details and pass it to connect.
         sc = spotify.SpotifyClient(
             client_id='CLIENT_ID',
             client_secret='SECRET'
         )
-        node: wavelink.Node = wavelink.Node(uri='http://localhost:2333', password='youshallnotpass')
-        await wavelink.NodePool.connect(client=self, nodes=[node], spotify=sc)
+        node: BillaLink.Node = BillaLink.Node(uri='http://localhost:2333', password='youshallnotpass')
+        await BillaLink.NodePool.connect(client=self, nodes=[node], spotify=sc)
 
 
 bot = Bot()
@@ -60,9 +60,9 @@ async def play(ctx: commands.Context, *, search: str) -> None:
     """
 
     if not ctx.voice_client:
-        vc: wavelink.Player = await ctx.author.voice.channel.connect(cls=wavelink.Player)
+        vc: BillaLink.Player = await ctx.author.voice.channel.connect(cls=BillaLink.Player)
     else:
-        vc: wavelink.Player = ctx.voice_client
+        vc: BillaLink.Player = ctx.voice_client
 
     # Check the search to see if it matches a valid Spotify URL...
     decoded = spotify.decode_url(search)

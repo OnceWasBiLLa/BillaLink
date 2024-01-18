@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 import discord
-import wavelink
+import BillaLink
 from discord.ext import commands
 
 
@@ -36,8 +36,8 @@ class Bot(commands.Bot):
         print(f'Logged in {self.user} | {self.user.id}')
 
     async def setup_hook(self) -> None:
-        # Wavelink 2.0 has made connecting Nodes easier... Simply create each Node
+        # BillaLink 2.0 has made connecting Nodes easier... Simply create each Node
         # and pass it to NodePool.connect with the client/bot.
-        node: wavelink.Node = wavelink.Node(uri='http://localhost:2333', password='youshallnotpass')
-        await wavelink.NodePool.connect(client=self, nodes=[node])
+        node: BillaLink.Node = BillaLink.Node(uri='http://localhost:2333', password='youshallnotpass')
+        await BillaLink.NodePool.connect(client=self, nodes=[node])
 

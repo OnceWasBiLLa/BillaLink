@@ -33,11 +33,11 @@ from typing import Any, List, Optional, Type, TypeVar, Union, TYPE_CHECKING
 import aiohttp
 from discord.ext import commands
 
-import wavelink
-from wavelink import Node, NodePool
+import BillaLink
+from BillaLink import Node, NodePool
 
 if TYPE_CHECKING:
-    from wavelink import Player, Playable
+    from BillaLink import Player, Playable
 
 
 __all__ = ('SpotifySearchType',
@@ -79,7 +79,7 @@ def decode_url(url: str) -> Optional[dict]:
 
     .. code:: python3
 
-        from wavelink.ext import spotify
+        from BillaLink.ext import spotify
 
         ...
 
@@ -112,7 +112,7 @@ class SpotifySearchType(enum.Enum):
     playlist
         Playlist search type.
     unusable
-        Unusable type. This type is returned when Wavelink can not be used to play this track.
+        Unusable type. This type is returned when BillaLink can not be used to play this track.
     """
     track = 0
     album = 1
@@ -267,7 +267,7 @@ class SpotifyTrack:
             The song to search for.
         type: Optional[:class:`~SpotifySearchType`]
             An optional enum value to use when searching with Spotify. Defaults to track.
-        node: Optional[:class:`wavelink.Node`]
+        node: Optional[:class:`BillaLink.Node`]
             An optional Node to use to make the search with.
         return_first: Optional[bool]
             An optional bool which when set to True will return only the first track found. Defaults to False.
@@ -327,7 +327,7 @@ class SpotifyTrack:
             Limit the amount of tracks returned.
         type: :class:`~SpotifySearchType`
             The type of search. Must be either playlist or album. Defaults to playlist.
-        node: Optional[:class:`wavelink.Node`]
+        node: Optional[:class:`BillaLink.Node`]
             An optional node to use when querying for tracks. Defaults to the best available.
 
         Examples
@@ -368,24 +368,24 @@ class SpotifyTrack:
         return results[0]
 
     async def fulfill(self, *, player: Player, cls: Playable, populate: bool) -> Playable:
-        """Used to fulfill the :class:`wavelink.Player` Auto Play Queue.
+        """Used to fulfill the :class:`BillaLink.Player` Auto Play Queue.
 
         .. warning::
 
-            Usually you would not call this directly. Instead you would set :attr:`wavelink.Player.autoplay` to true,
+            Usually you would not call this directly. Instead you would set :attr:`BillaLink.Player.autoplay` to true,
             and allow the player to fulfill this request automatically.
 
 
         Parameters
         ----------
-        player: :class:`wavelink.player.Player`
-            If :attr:`wavelink.Player.autoplay` is enabled, this search will fill the AutoPlay Queue with more tracks.
+        player: :class:`BillaLink.player.Player`
+            If :attr:`BillaLink.Player.autoplay` is enabled, this search will fill the AutoPlay Queue with more tracks.
         cls
             The class to convert this Spotify Track to.
         """
         try:
             tracks: list[cls] = await cls.search(f'"{self.isrc}"')
-        except wavelink.NoTracksError:
+        except BillaLink.NoTracksError:
             tracks: list[cls] = await cls.search(f'{self.name} - {self.artists[0]}')
 
         if not player.autoplay or not populate:
@@ -420,7 +420,7 @@ class SpotifyTrack:
 
 
 class SpotifyClient:
-    """Spotify client passed to :class:`wavelink.Node` for searching via Spotify.
+    """Spotify client passed to :class:`BillaLink.Node` for searching via Spotify.
 
     Parameters
     ----------

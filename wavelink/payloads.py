@@ -38,12 +38,12 @@ __all__ = ('TrackEventPayload', 'WebsocketClosedPayload')
 
 
 class TrackEventPayload:
-    """The Wavelink Track Event Payload.
+    """The BillaLink Track Event Payload.
 
     .. warning::
 
         This class should not be created manually, instead you will receive it from the
-        various wavelink track events.
+        various BillaLink track events.
 
     Attributes
     ----------
@@ -69,12 +69,12 @@ class TrackEventPayload:
 
 
 class WebsocketClosedPayload:
-    """The Wavelink WebsocketClosed Event Payload.
+    """The BillaLink WebsocketClosed Event Payload.
 
     .. warning::
 
         This class should not be created manually, instead you will receive it from the
-        wavelink `on_wavelink_websocket_closed` event.
+        BillaLink `on_BillaLink_websocket_closed` event.
 
     Attributes
     ----------

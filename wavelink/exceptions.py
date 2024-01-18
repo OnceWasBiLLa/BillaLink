@@ -26,7 +26,7 @@ from __future__ import annotations
 from typing import Any
 
 __all__ = (
-    'WavelinkException',
+    'BillaLinkException',
     'AuthorizationFailed',
     'InvalidNode',
     'InvalidLavalinkVersion',
@@ -38,29 +38,29 @@ __all__ = (
 )
 
 
-class WavelinkException(Exception):
-    """Base wavelink exception."""
+class BillaLinkException(Exception):
+    """Base BillaLink exception."""
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args)
 
 
-class AuthorizationFailed(WavelinkException):
+class AuthorizationFailed(BillaLinkException):
     """Exception raised when password authorization failed for this Lavalink node."""
     pass
 
 
-class InvalidNode(WavelinkException):
+class InvalidNode(BillaLinkException):
     pass
 
 
-class InvalidLavalinkVersion(WavelinkException):
-    """Exception raised when you try to use wavelink 2 with a Lavalink version under 3.7."""
+class InvalidLavalinkVersion(BillaLinkException):
+    """Exception raised when you try to use BillaLink 2 with a Lavalink version under 3.7."""
     pass
 
 
-class InvalidLavalinkResponse(WavelinkException):
-    """Exception raised when wavelink receives an invalid response from Lavalink.
+class InvalidLavalinkResponse(BillaLinkException):
+    """Exception raised when BillaLink receives an invalid response from Lavalink.
 
     Attributes
     ----------
@@ -73,17 +73,17 @@ class InvalidLavalinkResponse(WavelinkException):
         self.status: int | None = kwargs.get('status')
 
 
-class NoTracksError(WavelinkException):
+class NoTracksError(BillaLinkException):
     """Exception raised when no tracks could be found."""
     pass
 
 
-class QueueEmpty(WavelinkException):
+class QueueEmpty(BillaLinkException):
     """Exception raised when you try to retrieve from an empty queue."""
     pass
 
 
-class InvalidChannelStateError(WavelinkException):
+class InvalidChannelStateError(BillaLinkException):
     """Base exception raised when an error occurs trying to connect to a :class:`discord.VoiceChannel`."""
 
 

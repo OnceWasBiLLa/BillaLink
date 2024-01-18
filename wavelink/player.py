@@ -60,7 +60,7 @@ VoiceChannel = Union[
 
 
 class Player(discord.VoiceProtocol):
-    """Wavelink Player class.
+    """BillaLink Player class.
 
     This class is used as a :class:`~discord.VoiceProtocol` and inherits all its members.
 
@@ -89,7 +89,7 @@ class Player(discord.VoiceProtocol):
     current_node: :class:`node.Node`
         The Node this player is currently using.
     queue: :class:`queue.Queue`
-        The wavelink built in Queue. See :class:`queue.Queue`. This queue always takes precedence over the auto_queue.
+        The BillaLink built in Queue. See :class:`queue.Queue`. This queue always takes precedence over the auto_queue.
         Meaning any songs in this queue will be played before auto_queue songs.
     auto_queue: :class:`queue.Queue`
         The built-in AutoPlay Queue. This queue keeps track of recommended songs only.
@@ -386,7 +386,7 @@ class Player(discord.VoiceProtocol):
                    ) -> Playable:
         """|coro|
 
-        Play a WaveLink Track.
+        Play a BillaLink Track.
 
         Parameters
         ----------
@@ -557,7 +557,7 @@ class Player(discord.VoiceProtocol):
 
         Parameters
         ----------
-        filter: :class:`wavelink.Filter`
+        filter: :class:`BillaLink.Filter`
             The filter to apply to the player.
         seek: bool
             Whether to seek the player to its current position
